@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v4
-    - name: build script
+    - name: Run build.sh script
       run: sudo CONFIG="${{ github.workspace }}/external/config/config-opicm4.conf" ./build.sh
     # - uses: actions/upload-artifact@v4
+    - name: Upload logs
+      uses: actions/upload-artifact@v4
+      with:
+        name: run-logs
+        path: ${{ github.workspace }}/**/*.log
+      if: ${{ always() }}
