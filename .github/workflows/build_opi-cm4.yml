@@ -1,0 +1,21 @@
+name: Image Build Automation
+
+on:
+  push:
+    branches: [ "next" ]
+  workflow_dispatch:
+
+jobs:
+  build_opi-cm4:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: configure
+      run: |
+        echo "DOWNLOAD_MIRROR=usa" >> $GITHUB_ENV
+        echo "BUILD_OPT=image" >> $GITHUB_ENV
+        echo "BOARD=orangepicm4" >> $GITHUB_ENV
+        echo "BRANCH=next" >> $GITHUB_ENV
+        echo "BUILD_MINIMAL=yes" >> $GITHUB_ENV
+    - name: build script
+      run: sudo ./build.sh
