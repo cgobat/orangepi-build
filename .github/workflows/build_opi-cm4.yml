@@ -1,12 +1,9 @@
-name: Image Build Automation
+name: CM4 Image Build Automation
 
 on:
   push:
     branches: [ "next" ]
   workflow_dispatch:
-
-env:
-  CONFIG: ${{ github.workspace }}/external/config/config-opicm4.conf
 
 jobs:
   build_opi-cm4:
@@ -14,5 +11,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: build script
-      run: sudo CONFIG=$CONFIG ./build.sh
+      run: sudo CONFIG="${{ github.workspace }}/external/config/config-opicm4.conf" ./build.sh
     # - uses: actions/upload-artifact@v4
