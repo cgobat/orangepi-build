@@ -620,6 +620,7 @@ if [[ -z ${ARMBIAN_MIRROR} ]]; then
 
 	done
 fi
+display_alert "Selected Armbian mirror" "$ARMBIAN_MIRROR" "info"
 
 # For (late) user override.
 # Notice: it is too late to define hook functions or add extensions in lib.config, since the extension initialization already ran by now.
