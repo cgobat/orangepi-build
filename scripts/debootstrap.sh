@@ -158,7 +158,7 @@ create_rootfs_cache()
 
 		cd $SDCARD # this will prevent error sh: 0: getcwd() failed
 
-		bootstrap bullseye "$SDCARD" "https://mirrors.ustc.edu.cn/debian/"
+		bootstrap bookworm "$SDCARD" "https://ftp.debian.org/debian/"
 
 		mount_chroot "$SDCARD"
 
@@ -822,7 +822,7 @@ create_image()
 	local version="${BOARD^}_${REVISION}_${DISTRIBUTION,}_${RELEASE}_${IMAGE_TYPE}"${DESKTOP_ENVIRONMENT:+_$DESKTOP_ENVIRONMENT}"_linux$(grab_version "$LINUXSOURCEDIR")"
 
 	if [[ ${RELEASE} == "raspi" ]]; then
-		local version="${BOARD^}_${REVISION}_raspios_bullseye_${IMAGE_TYPE}"${DESKTOP_ENVIRONMENT:+_$DESKTOP_ENVIRONMENT}"_linux$(grab_version "$LINUXSOURCEDIR")"
+		local version="${BOARD^}_${REVISION}_raspios_bookworm_${IMAGE_TYPE}"${DESKTOP_ENVIRONMENT:+_$DESKTOP_ENVIRONMENT}"_linux$(grab_version "$LINUXSOURCEDIR")"
 	fi
 
 	[[ $ROOTFS_TYPE == nfs ]] && version=${version}_nfsboot

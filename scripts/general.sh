@@ -245,23 +245,23 @@ create_sources_list()
 
 	raspi)
 	cat <<-EOF > "${basedir}"/etc/apt/sources.list
-	deb http://${DEBIAN_MIRROR} bullseye main contrib non-free
-	#deb-src http://${DEBIAN_MIRROR} bullseye main contrib non-free
+	deb http://${DEBIAN_MIRROR} bookworm main contrib non-free
+	#deb-src http://${DEBIAN_MIRROR} bookworm main contrib non-free
 
-	deb http://${DEBIAN_MIRROR} bullseye-updates main contrib non-free
-	#deb-src http://${DEBIAN_MIRROR} bullseye-updates main contrib non-free
+	deb http://${DEBIAN_MIRROR} bookworm-updates main contrib non-free
+	#deb-src http://${DEBIAN_MIRROR} bookworm-updates main contrib non-free
 
-	deb http://${DEBIAN_MIRROR} bullseye-backports main contrib non-free
-	#deb-src http://${DEBIAN_MIRROR} bullseye-backports main contrib non-free
+	deb http://${DEBIAN_MIRROR} bookworm-backports main contrib non-free
+	#deb-src http://${DEBIAN_MIRROR} bookworm-backports main contrib non-free
 
-	deb http://${DEBIAN_SECURTY} bullseye-security main contrib non-free
-	#deb-src http://${DEBIAN_SECURTY} bullseye-security main contrib non-free
+	deb http://${DEBIAN_SECURTY} bookworm-security main contrib non-free
+	#deb-src http://${DEBIAN_SECURTY} bookworm-security main contrib non-free
 	EOF
 
 	cat <<-EOF > "${basedir}"/etc/apt/sources.list.d/raspi.list
-	deb http://${RASPI_MIRROR} bullseye main
+	deb http://${RASPI_MIRROR} bookworm main
 	# Uncomment line below then 'apt-get update' to enable 'apt-get source'
-	#deb-src http://archive.raspberrypi.org/debian/ bullseye main
+	#deb-src http://archive.raspberrypi.org/debian/ bookworm main
 	EOF
 
 	if [ -n "$APT_PROXY" ]; then
