@@ -18,7 +18,7 @@ jobs:
     #       ${{ github.workspace }}/external/cache
     #       ${{ github.workspace }}/toolchains
     - name: Run build.sh script
-      run: sudo CONFIG="${{ github.workspace }}/external/config/config-opicm4.conf" ./build.sh
+      run: sudo CONFIG="${{ github.workspace }}/.github/pipeline-config/autobuild-cm4.conf" ./build.sh
     - name: Upload produced image
       uses: actions/upload-artifact@v4
       with:
