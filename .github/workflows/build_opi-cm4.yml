@@ -11,12 +11,12 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v4
-    - name: Establish cache
-      uses: actions/cache@v4
-      with:
-        path: |
-          ${{ github.workspace }}/external/cache
-          ${{ github.workspace }}/toolchains
+    # - name: Establish cache
+    #   uses: actions/cache@v4
+    #   with:
+    #     path: |
+    #       ${{ github.workspace }}/external/cache
+    #       ${{ github.workspace }}/toolchains
     - name: Run build.sh script
       run: sudo CONFIG="${{ github.workspace }}/external/config/config-opicm4.conf" ./build.sh
     - name: Upload produced image
