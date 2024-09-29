@@ -9,9 +9,22 @@ jobs:
   build_opi-cm4:
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
+    - name: Establish cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ${{ github.workspace }}/external/cache
+          ${{ github.workspace }}/toolchains
     - name: Run build.sh script
       run: sudo CONFIG="${{ github.workspace }}/external/config/config-opicm4.conf" ./build.sh
+    - name: Upload produced image
+      uses: actions/upload-artifact@v4
+      with:
+        name: built-image
+        path: ${{ github.workspace }}/output/images/*/*.7z
+      if: ${{ success() }}
     - name: Upload logs
       uses: actions/upload-artifact@v4
       with:
