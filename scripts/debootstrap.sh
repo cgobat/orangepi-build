@@ -346,6 +346,7 @@ create_rootfs_cache()
 		fi
 
 		install_docker
+		[[ ${BOARDFAMILY} == "starfive2" ]] && jh7110_install_libs
 
 		# Remove packages from packages.uninstall
 
@@ -643,12 +644,10 @@ PREPARE_IMAGE_SIZE
 
 	check_loop_device "$LOOP"
 
-	losetup $LOOP ${SDCARD}.raw
+	losetup -P $LOOP ${SDCARD}.raw
 
 	# loop device was grabbed here, unlock
 	flock -u $FD
-
-	partprobe $LOOP
 
 	# stage: create fs, mount partitions, create fstab
 	rm -f $SDCARD/etc/fstab
